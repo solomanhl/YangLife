@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_friend_request"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:background="#ffffff"
+    android:descendantFocusability="blocksDescendants" >
+
+    <TextView
+        android:id="@+id/tv_lvfriendid_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_lvfriend_request"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/tv_lvfriendid_request"
+        android:gravity="center"
+        android:text="手机号" />
+
+    <TextView
+        android:id="@+id/tv_lvfriend_requestnichen"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_lvfriend_request"
+        android:layout_marginLeft="16dp"
+        android:gravity="center"
+        android:text="昵称" />
+
+    <Button
+        android:id="@+id/btn_lv_agree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="11dp"
+        android:layout_toLeftOf="@+id/btn_lv_disagree"
+        android:text="同意" />
+
+    <Button
+        android:id="@+id/btn_lv_disagree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="11dp"
+        android:text="不同意" />
+
+</RelativeLayout>

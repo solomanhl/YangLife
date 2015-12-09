@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_shequ"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:background="#ffffff"
+    android:descendantFocusability="blocksDescendants"
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp" >
+
+    <ImageView
+        android:id="@+id/iv_lvpic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/community_icon2" />
+
+    <TextView
+        android:id="@+id/tv_lvshequ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/iv_lvpic"
+        android:gravity="center"
+        android:text="Title" />
+
+    <TextView
+        android:id="@+id/tv_lvshequid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_toLeftOf="@+id/iv_lvarrow"
+        android:layout_toRightOf="@+id/tv_lvshequ"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_lvarrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/arrow4" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_lvshequ"
+        android:layout_below="@+id/tv_lvshequ" >
+
+        <TextView
+            android:id="@+id/tv_lv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name" />
+
+        <TextView
+            android:id="@+id/tv_lv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="time" />
+    </LinearLayout>
+
+</RelativeLayout>

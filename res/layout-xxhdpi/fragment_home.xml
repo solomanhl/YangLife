@@ -1,0 +1,140 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e9e9e9"
+    tools:context="com.heliang.yanglife.MainActivity$PlaceholderFragment" >
+
+    <RelativeLayout
+        android:id="@+id/rl_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/head_top_height"
+        android:layout_alignParentTop="true"
+        android:background="#ffffff" >
+
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:clickable="true"
+            android:text="武汉"
+            android:textColor="#ff8638"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/tv_city"
+            android:src="@drawable/arrow1" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="样生活"
+            android:textColor="#000"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_fabu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:text="发布信息"
+            android:textColor="#ff8638" />
+    </RelativeLayout>
+
+    <com.heliang.yanglife.SlideShowView
+        android:id="@+id/slideshowView"
+        android:layout_width="match_parent"
+        android:layout_height="134dp"
+        android:layout_below="@+id/rl_banner" />
+
+    <LinearLayout
+        android:id="@+id/ll_classify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/slideshowView"
+        android:layout_marginTop="1dp" >
+
+        <ImageView
+            android:id="@+id/iv_gongying"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/sort_btn1" />
+
+        <ImageView
+            android:id="@+id/iv_xuqiu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/sort_btn2" />
+
+        <ImageView
+            android:id="@+id/iv_huodong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/sort_btn3" />
+
+        <ImageView
+            android:id="@+id/iv_qiandao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/sort_btn4" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_favor"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_below="@+id/ll_classify"
+        android:background="#fff"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/iv_favor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="11dp"
+            android:src="@drawable/position_icon" />
+
+        <TextView
+            android:id="@+id/tv_home_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_favor"
+            android:text="武汉大学" />
+
+        <ImageView
+            android:id="@+id/iv_fresh"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="11dp"
+            android:src="@drawable/refresh" />
+    </RelativeLayout>
+
+    <com.heliang.MyListView.AutoListView
+        android:id="@+id/lv_favor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_favor"
+        android:layout_marginTop="1dp" />
+
+</RelativeLayout>

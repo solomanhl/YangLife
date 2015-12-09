@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f3f3f3"
+    android:focusableInTouchMode="true" >
+
+    <RelativeLayout
+        android:id="@+id/rl_me_regtop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/head_top_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff" >
+
+        <ImageView
+            android:id="@+id/iv_me_registerback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/arrow2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="注册"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_me_regusername"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rl_me_regtop"
+        android:layout_marginTop="@dimen/marin_to_head"
+        android:background="@drawable/login_input"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="帐    号"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_reg_username"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/login_input"
+            android:hint="手机号码"
+            android:inputType="number"
+            android:textSize="@dimen/input_text_size" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_reg_yanzhenma"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/ll_me_regusername"
+        android:layout_marginTop="1dp"
+        android:background="#fff"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/tv_reg_yanzhenma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:text="验证码"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_me_regyanzhenma"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toLeftOf="@+id/iv_me_regyanzhenma"
+            android:layout_toRightOf="@+id/tv_reg_yanzhenma"
+            android:background="@drawable/login_input"
+            android:hint="短信验证码"
+            android:textSize="@dimen/input_text_size" />
+
+        <ImageView
+            android:id="@+id/iv_me_regyanzhenma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/code_btn" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_me_regmima"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rl_reg_yanzhenma"
+        android:layout_marginTop="1dp"
+        android:background="#fff"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="密    码"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_reg_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/login_input"
+            android:enabled="false"
+            android:hint="6-20位数字或字母"
+            android:inputType="textPassword"
+            android:textSize="@dimen/input_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_me_regmima_again"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/ll_me_regmima"
+        android:layout_marginTop="1dp"
+        android:background="#fff"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="确认密码"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_reg_password_again"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/login_input"
+            android:enabled="false"
+            android:hint="再次输入密码"
+            android:inputType="textPassword"
+            android:textSize="@dimen/input_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_me_regsubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_me_regmima_again"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/register_btn1"
+        android:enabled="false" />
+
+</RelativeLayout>

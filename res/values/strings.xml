@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">样生活</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <!-- <string name="serverURL">http://192.168.2.121:8080/yanglife</string> -->
+    <string name="serverURL">http://61.183.86.184:8003</string>
+
+    <!-- autoListView刷新相关 -->
+    <string name="lastUpdateTime">2015-12-08 14:56:30</string>
+    <string name="pull_to_refresh">下拉可以刷新</string>
+    <string name="release_to_refresh">松开可以刷新</string>
+    <string name="more">上滑加载更多</string>
+    <string name="noData">没有记录</string>
+    <string name="loadFull">没有更多了</string>
+</resources>

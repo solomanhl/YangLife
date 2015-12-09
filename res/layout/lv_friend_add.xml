@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_friend_add"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:background="#ffffff"
+    android:descendantFocusability="blocksDescendants" >
+
+    <TextView
+        android:id="@+id/tv_lvfriendid_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_lvfriendid_add"
+        android:src="@drawable/pic1" />
+
+    <TextView
+        android:id="@+id/tv_lvfriend_add"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/iv_pic"
+        android:gravity="center"
+        android:text="小白" />
+
+    <TextView
+        android:id="@+id/tv_lvfriend_addnichen"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tv_lvfriend_add"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/iv_pic"
+        android:gravity="center"
+        android:text="我的****是" />
+
+    <ImageView
+        android:id="@+id/iv_lv_addfriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="11dp"
+        android:background="@drawable/pal_btn1" />
+
+</RelativeLayout>

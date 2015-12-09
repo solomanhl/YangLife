@@ -519,7 +519,8 @@ public class FragmentHome extends Fragment {
 			//通知加载完成
 			lv_favor.onLoadComplete();
 			//移动到上次加载的的末尾
-			lv_favor.smoothScrollToPosition(saImageItems.getCount() - jsonarray.length() - 1);
+//			lv_favor.smoothScrollToPosition(saImageItems.getCount() - jsonarray.length() - 1);
+			lv_favor.setSelection(saImageItems.getCount() - jsonarray.length() - 1);//定位X行
 		}
 	}
 

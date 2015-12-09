@@ -14,6 +14,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.heliang.MyListView.AutoListView;
+import com.heliang.MyListView.AutoListView.OnLoadListener;
+import com.heliang.MyListView.AutoListView.OnRefreshListener;
 import com.heliang.yanglife.GlobalVar;
 import com.heliang.yanglife.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -38,7 +41,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +55,8 @@ public class FragmentSearch extends Fragment {
 	private TextView tv_alltime, tv_allclassify, tv_condition;
 	private ImageView iv_search_back;
 	private FragmentJobDetail fragmentJobDetail;
+	private int jobPage = 1;
+	private String statu = "onReFresh";//onReFresh  onLoad
 	
 	//public sportDataThread st = null;
 	
@@ -76,6 +80,9 @@ public class FragmentSearch extends Fragment {
 		setOnClickListener();
 		findFragment();
 		
+		//设置AutoListView监听器
+		SetAutoListViewListener();
+		
 		job_list_type = getArguments().getString("job_list_type");  
 		gongxu = getArguments().getString("gongxu");
 		
@@ -84,6 +91,8 @@ public class FragmentSearch extends Fragment {
 		// 此处甚至可以不需要设置Looper，因为 Handler默认就使用当前线程的Looper
 		messageHandler = new MessageHandler(looper);
 			
+		statu = "onReFresh";
+		jobPage = 1;
 		if ("all".equals(job_list_type)){
 			new SearchThread(gongxu).start();//列出所有的任务
 		}else if ("me".equals(job_list_type)){
@@ -100,7 +109,7 @@ public class FragmentSearch extends Fragment {
 	}
 
 	public void findView(View view){
-		lv_search = (ListView) view.findViewById(R.id.lv_search);
+		lv_search = (AutoListView) view.findViewById(R.id.lv_search);
 		tv_alltime = (TextView) view.findViewById(R.id.tv_alltime);
 		tv_allclassify = (TextView) view.findViewById(R.id.tv_allclassify);
 		tv_condition = (TextView) view.findViewById(R.id.tv_condition);
@@ -118,6 +127,7 @@ public class FragmentSearch extends Fragment {
 //				}else{
 //					tv_condition.setVisibility(View.VISIBLE);
 //				}
+				jobPage = 1;
 				if ("all".equals(job_list_type)){
 					
 				}else if ("me".equals(job_list_type)){//个人发布任务
@@ -137,6 +147,7 @@ public class FragmentSearch extends Fragment {
 //				}else{
 //					tv_condition.setVisibility(View.VISIBLE);
 //				}
+				jobPage = 1;
 				if ("all".equals(job_list_type)){
 					new SearchThread(gongxu).start();
 				}else if ("me".equals(job_list_type)){//个人接受任务
@@ -230,7 +241,7 @@ public class FragmentSearch extends Fragment {
 		String	servletUrl = getString(R.string.serverURL) + "/app/job-list-by-all.jspx?schoolId=";
 		servletUrl += appState.xuexiaoid + "&cityId=";
 		servletUrl += appState.cityid + "&type=";
-		servletUrl += gongxu + "&pageNo=1";
+		servletUrl += gongxu + "&pageNo=" + jobPage;
 		
 		String line = "";
 //		line = "{\"username\":\"admin\",\"status\":1,\"userId\":1}";
@@ -414,7 +425,7 @@ public class FragmentSearch extends Fragment {
 		private ArrayList<HashMap<String, Object>> lst;
 		// 生成适配器的ImageItem <====> 动态数组的元素，两者一一对应
 		private MyListAdapter saImageItems;
-		private ListView lv_search;
+		private AutoListView lv_search;
 		private HashMap<String, Object> map = new HashMap<String, Object>();
 
 		private void updateUI() {
@@ -427,10 +438,16 @@ public class FragmentSearch extends Fragment {
 				tv_allclassify.setText("全部分类");
 			}
 			
-			lst = new ArrayList<HashMap<String, Object>>();
+			
+			if ("onReFresh".equals(statu)){//如果是刷新，就新建lst
+				lst = new ArrayList<HashMap<String, Object>>();
+			}else if ("onLoad".equals(statu)){//如果是继续加载就接着添加
+				
+			}
 			saImageItems = new MyListAdapter(getActivity(), lst);// 没什么解释
 
 			for(int i=0;i<jsonarray.length();i++){
+				lv_search.setResultSize(jsonarray.length());//根据结果的大小来决定footer显示
 				map = new HashMap<String, Object>();
 				try {
 					jsonobj = new JSONObject(jsonarray.getString(i));
@@ -486,6 +503,52 @@ public class FragmentSearch extends Fragment {
 
 			// 绑定数据
 			BinderListData(saImageItems);
+			
+			if ("onReFresh".equals(statu)){//如果是刷新
+				//通知刷新完成
+				lv_search.onRefreshComplete();
+			}else if ("onLoad".equals(statu)){//如果是继续加载
+				//通知加载完成
+				lv_search.onLoadComplete();
+				//移动到上次加载的的末尾
+//				lv_search.smoothScrollToPosition(saImageItems.getCount() - jsonarray.length() - 1);
+				lv_search.setSelection(saImageItems.getCount() - jsonarray.length() - 1);//定位X行
+			}
+		}
+		
+		private void SetAutoListViewListener() {
+			// TODO Auto-generated method stub
+		// 点击控件监听器
+		lv_search.setOnItemClickListener(new ItemClickListener());
+
+		// 下拉刷新监听器
+		lv_search.setOnRefreshListener(new OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				statu = "onReFresh";
+				jobPage = 1;
+				if ("all".equals(job_list_type)) {
+					new SearchThread(gongxu).start();// 列出所有的任务
+				} else if ("me".equals(job_list_type)) {
+					new SearchThread2().start();// 个人发布的任务
+				}
+			}
+
+		});
+
+		// 加载更多监听
+		lv_search.setOnLoadListener(new OnLoadListener() {
+			@Override
+			public void onLoad() {
+				statu = "onLoad";
+				jobPage++;
+				if ("all".equals(job_list_type)) {
+					new SearchThread(gongxu).start();// 列出所有的任务
+				} else if ("me".equals(job_list_type)) {
+					new SearchThread2().start();// 个人发布的任务
+				}
+			}
+		});
 		}
 
 		// 绑定数据
@@ -495,8 +558,6 @@ public class FragmentSearch extends Fragment {
 			// 添加并且显示
 			lv_search.setAdapter(saImageItems);
 			saImageItems.notifyDataSetChanged();
-			// 点击控件监听器
-			lv_search.setOnItemClickListener(new ItemClickListener());
 		}
 
 		class ItemClickListener implements OnItemClickListener {

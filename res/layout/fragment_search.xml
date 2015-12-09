@@ -80,12 +80,11 @@
         android:text="TextView"
         android:visibility="gone" />
 
-    <ListView
+    <com.heliang.MyListView.AutoListView
         android:id="@+id/lv_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_condition"
-        android:layout_marginTop="1dp" >
-    </ListView>
+        android:layout_marginTop="1dp" />
 
 </RelativeLayout>

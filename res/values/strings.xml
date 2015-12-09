@@ -14,4 +14,7 @@
     <string name="more">上滑加载更多</string>
     <string name="noData">没有记录</string>
     <string name="loadFull">没有更多了</string>
+    <integer-array name="pageSize">
+        <item >2</item>
+    </integer-array>
 </resources>

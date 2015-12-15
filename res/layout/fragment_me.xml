@@ -173,7 +173,8 @@
         android:layout_height="45dp"
         android:layout_below="@+id/rl_me_shenqin"
         android:layout_marginTop="8dp"
-        android:background="#ffffff" >
+        android:background="#ffffff"
+        android:visibility="gone" >
 
         <ImageView
             android:id="@+id/iv_me_shoucang"
